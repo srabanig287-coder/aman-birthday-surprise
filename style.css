@@ -142,3 +142,7 @@ body.letter-open {
   animation: zoomIn .24s ease both;
 }
 
+/* Fix reminder card flipping */
+.note-card.reveal.visible.flipped {
+  transform: rotateY(180deg);
+  }

@@ -3,3 +3,142 @@
 @keyframes drift{to{transform:translate(70px,50px) scale(1.25)}}@keyframes float{50%{transform:translateY(-9px)}}@keyframes flicker{to{transform:rotate(-42deg) scale(1.08);filter:drop-shadow(0 0 14px #ffb34b)}}@keyframes bob{50%{transform:translateY(6px)}}@keyframes contentIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes zoomIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
 @media(max-width:700px){.lock-card{padding:48px 16px 32px;border-radius:190px 190px 20px 20px}.lock-card h1{font-size:57px}.countdown{gap:7px}.countdown div{min-width:48px}.countdown strong{font-size:30px}.section-wrap{width:min(100% - 30px,560px)}.hero{min-height:72svh}.letter-section,.cake-section,.notes-section,.gallery-section,.gift-section{padding:72px 0}.notes-grid{grid-template-columns:1fr;gap:12px}.note-card{height:145px}.photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.photo-card{padding:7px 7px 12px}.photo-card:nth-child(3n+2),.photo-card:nth-child(3n){margin-top:0}.photo-card:nth-child(even){margin-top:22px}.photo-card figcaption{font-size:16px}.envelope{height:225px}.envelope.open .letter-paper{transform:translateY(-145px)}.site-footer{flex-wrap:wrap;justify-content:center}.site-footer p{width:100%;text-align:center;order:-1}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* ===== FULL PAGE BIRTHDAY LETTER FIX ===== */
+
+/* Keep the letter paper tucked inside the envelope */
+.envelope {
+  overflow: visible;
+}
+
+.letter-paper {
+  overflow: hidden;
+}
+
+.letter-inner {
+  display: none;
+}
+
+/* Never let the paper float out of the envelope */
+.envelope.open .letter-paper {
+  transform: none;
+  bottom: 4%;
+}
+
+.envelope.open .letter-paper .letter-inner {
+  display: none;
+}
+
+/* Full-screen letter reader */
+.letter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 16px;
+  background: rgba(15, 7, 16, 0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .22s ease, visibility .22s ease;
+  overflow-y: auto;
+}
+
+.letter-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.letter-modal-paper {
+  box-sizing: border-box;
+  width: min(100%, 680px);
+  min-height: min(85svh, 780px);
+  margin: auto;
+  padding: clamp(28px, 7vw, 60px) clamp(22px, 7vw, 64px);
+  background: #f5e9d9;
+  color: #4a3040;
+  border: 1px solid #e5c99d;
+  box-shadow: 0 24px 90px #0008;
+  font: clamp(17px, 4.2vw, 21px)/1.7 var(--serif);
+  position: relative;
+  animation: letterPageIn .28s ease both;
+}
+
+.letter-modal-paper p {
+  margin: 0 0 22px;
+}
+
+.letter-modal-paper .script {
+  font: clamp(38px, 9vw, 54px) var(--script);
+  color: #8e526b;
+}
+
+.letter-modal-paper .signoff {
+  text-align: right;
+  margin-top: 28px;
+}
+
+.letter-close {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 61;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #d9b77b88;
+  border-radius: 50%;
+  background: #321b30;
+  color: #f7ecdf;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@keyframes letterPageIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+body.letter-open {
+  overflow: hidden;
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+  .letter-modal {
+    align-items: flex-start;
+    padding: 64px 12px 18px;
+  }
+
+  .letter-modal-paper {
+    min-height: calc(100svh - 82px);
+    padding: 28px 22px;
+    font-size: 19px;
+  }
+}
+
+/* Faster, smoother photo transitions */
+.photo-card {
+  transition: transform .26s cubic-bezier(.2,.8,.2,1),
+              box-shadow .26s ease;
+}
+
+.photo-card:hover {
+  transform: rotate(0) scale(1.04);
+}
+
+.lightbox {
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.lightbox img {
+  animation: zoomIn .24s ease both;
+}
+

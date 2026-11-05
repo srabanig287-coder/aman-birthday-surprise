@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   // Birthday unlock is fixed to midnight in India Standard Time (UTC+05:30).
-  const UNLOCK_AT = new Date('2026-11-29T00:00:00+05:30').getTime();
+  const UNLOCK_AT = new Date('2026-11-02T00:00:00+05:30').getTime();
   const PREVIEW_MODE = new URLSearchParams(window.location.search).get('preview') === '1';
   const $ = (id) => document.getElementById(id);
   const lockScreen = $('lockScreen');

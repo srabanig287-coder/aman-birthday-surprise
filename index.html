@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#160d17">
+  <meta name="description" content="A little birthday universe made just for Aman.">
+  <title>Happy Birthday, Aman ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
+  <canvas id="celebration" aria-hidden="true"></canvas>
+
+  <main>
+    <section id="lockScreen" class="lock-screen">
+      <div class="lock-top"><span class="tiny-star">✦</span> A LITTLE SOMETHING FOR YOU <span class="tiny-star">✦</span></div>
+      <div class="lock-card glass">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="gift-icon" aria-hidden="true"><span>🎁</span></div>
+        <p class="eyebrow">A day worth celebrating</p>
+        <h1>Happy Birthday,<br><em>Aman</em></h1>
+        <p class="lock-copy">Some surprises are worth waiting for.<br>Yours is almost here.</p>
+        <div id="countdown" class="countdown" aria-label="Time until birthday">
+          <div><strong id="days">00</strong><small>DAYS</small></div>
+          <i>:</i><div><strong id="hours">00</strong><small>HOURS</small></div>
+          <i>:</i><div><strong id="minutes">00</strong><small>MINUTES</small></div>
+          <i>:</i><div><strong id="seconds">00</strong><small>SECONDS</small></div>
+        </div>
+        <p id="lockHint" class="lock-hint">The surprise unlocks at midnight · 29 November 2026</p>
+        <button id="unlockBtn" class="gold-button" hidden>Unlock your surprise <span>✧</span></button>
+        <p class="private-note">A little birthday universe, made just for you.</p>
+      </div>
+      <div class="lock-footer">MADE WITH ♡ · JUST FOR AMAN</div>
+    </section>
+
+    <section id="birthdayContent" class="birthday-content" hidden>
+      <header class="site-header">
+        <a class="wordmark" href="#top">A<span>✦</span></a>
+        <button id="musicBtn" class="music-button" aria-label="Play birthday music"><span class="music-dot">♫</span><span id="musicLabel">Play music</span></button>
+      </header>
+
+      <section id="top" class="hero section-wrap">
+        <div class="hero-glow"></div>
+        <p class="eyebrow reveal">TODAY IS YOURS</p>
+        <h1 class="hero-title reveal">Happy Birthday,<br><em>Aman.</em></h1>
+        <p class="hero-sub reveal">May life keep surprising you with reasons to smile.</p>
+        <div class="scroll-cue">SCROLL TO OPEN THE LITTLE THINGS <span>↓</span></div>
+      </section>
+
+      <section class="letter-section section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">A NOTE FOR YOU</p><h2>Words from the <em>heart</em></h2><p class="muted">A little letter, wrapped up with care.</p></div>
+        <div class="envelope-area reveal">
+          <div id="envelope" class="envelope">
+            <div class="envelope-back"></div><div class="letter-paper"><div class="letter-inner">
+              <p class="script">Dear Aman,</p>
+              <p>Today deserves more than an ordinary wish. It deserves a pause, a smile, and a reminder of how much possibility a new year can hold.</p>
+              <p>Keep your curiosity alive, keep finding joy in the little things, and never lose the parts of you that make you wonderfully you. May the coming year bring good health, brave beginnings, peaceful days, big laughs, and memories you will want to keep forever.</p>
+              <p>Here is to every version of you: the little one with a whole world ahead, the person you are today, and the person you are still becoming.</p>
+              <p class="script signoff">Have the happiest birthday. ♡</p>
+            </div></div>
+            <div class="envelope-flap"></div><button id="sealBtn" class="wax-seal" aria-label="Open birthday letter">A</button>
+          </div>
+          <p id="letterHint" class="tap-hint">Tap the seal to open your letter</p>
+        </div>
+      </section>
+
+      <section class="cake-section section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">MAKE A WISH</p><h2>Three little <em>wishes</em></h2><p class="muted">Tap each flame, one at a time. Save a wish for every candle.</p></div>
+        <div class="cake-wrap reveal">
+          <div class="candles">
+            <button class="candle" data-candle="0" aria-label="Blow out candle one"><span class="flame"></span><span class="wick"></span></button>
+            <button class="candle" data-candle="1" aria-label="Blow out candle two"><span class="flame"></span><span class="wick"></span></button>
+            <button class="candle" data-candle="2" aria-label="Blow out candle three"><span class="flame"></span><span class="wick"></span></button>
+          </div>
+          <div class="cake"><div class="icing"></div><div class="cake-top"></div><div class="cake-side"><span>✦</span><span>♡</span><span>✦</span></div></div>
+          <p id="wishMessage" class="wish-message">Three wishes. Take your time.</p>
+        </div>
+      </section>
+
+      <section class="notes-section section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">A FEW LITTLE REMINDERS</p><h2>Open when you <em>need a smile</em></h2><p class="muted">Three tiny notes. Tap to turn each one over.</p></div>
+        <div class="notes-grid">
+          <button class="note-card reveal" aria-expanded="false"><span class="note-front"><b>01</b><strong>A reminder</strong><small>Tap to reveal ✦</small></span><span class="note-back">You do not have to have everything figured out. Keep going, one honest step at a time. 🌙</span></button>
+          <button class="note-card reveal" aria-expanded="false"><span class="note-front"><b>02</b><strong>A wish</strong><small>Tap to reveal ✦</small></span><span class="note-back">May your days be full of laughter, your plans find their way, and your heart always find a little peace. ✨</span></button>
+          <button class="note-card reveal" aria-expanded="false"><span class="note-front"><b>03</b><strong>A secret</strong><small>Tap to reveal ✦</small></span><span class="note-back">The best chapters are not always the loudest. Some of life's loveliest moments arrive quietly. Keep noticing them. ♡</span></button>
+        </div>
+      </section>
+
+      <section class="gallery-section section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">A LITTLE TIME CAPSULE</p><h2>From little moments<br>to <em>big memories</em></h2><p class="muted">Eleven frames. A whole lot of life in between.</p></div>
+        <div id="photoGallery" class="photo-gallery">
+          <figure class="photo-card reveal"><img src="assets/photos/photo-01.jpg" alt="Aman in a green traditional outfit" loading="lazy"><figcaption>Tradition, with your own touch.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-02.jpg" alt="Aman in a mustard kurta outdoors" loading="lazy"><figcaption>Golden-hour kind of day.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-03.jpg" alt="Aman taking a mirror selfie" loading="lazy"><figcaption>Just being you.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-04.jpg" alt="Aman in a coral kurta outdoors" loading="lazy"><figcaption>A moment worth keeping.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-05.jpg" alt="A close-up portrait of Aman" loading="lazy"><figcaption>That familiar smile.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-06.jpg" alt="Aman at a colourful night event" loading="lazy"><figcaption>Collecting little adventures.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-07.jpg" alt="Aman smiling in a maroon shirt" loading="lazy"><figcaption>A face full of stories.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-08.jpg" alt="Aman as a child holding a microphone" loading="lazy"><figcaption>Once upon a little time.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-09.jpg" alt="A childhood memory with family" loading="lazy"><figcaption>Where some stories began.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-10.jpg" alt="Aman in a festive traditional outfit" loading="lazy"><figcaption>Growing, glowing, becoming.</figcaption></figure>
+          <figure class="photo-card reveal"><img src="assets/photos/photo-11.jpg" alt="Aman smiling in a mint green shirt" loading="lazy"><figcaption>And still so much ahead.</figcaption></figure>
+        </div>
+        <p class="gallery-footnote">Tap any photograph to see it a little closer.</p>
+      </section>
+
+      <section class="gift-section section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">ONE LAST THING</p><h2>A little <em>surprise</em> for you</h2><p class="muted">Go on. Open it.</p></div>
+        <button id="giftBtn" class="gift-box reveal" aria-label="Open your birthday gift"><span class="gift-lid"></span><span class="gift-bow">✧</span><span class="gift-ribbon"></span><span class="gift-body">♡</span></button>
+        <div id="finalMessage" class="final-message" hidden><p class="script">For you, Aman</p><h2>May this year be<br><em>your kind of wonderful.</em></h2><p>More reasons to laugh. More places to go. More dreams turning real. And, in between it all, plenty of ordinary days that feel extraordinary.</p><strong>Happy Birthday, once again. ♡</strong></div>
+      </section>
+      <footer class="site-footer"><span>MADE WITH ♡</span><p>For Aman, on his special day.</p><span>29 · 11 · 2026</span></footer>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true"><button id="closeLightbox" aria-label="Close photo">×</button><img id="lightboxImage" alt="Enlarged birthday memory"><p id="lightboxCaption"></p></div>
+  <audio id="birthdayAudio" src="assets/music/birthday-song.mp3" preload="metadata" loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>

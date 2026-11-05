@@ -146,3 +146,46 @@ body.letter-open {
 .note-card.reveal.visible.flipped {
   transform: rotateY(180deg);
   }
+
+/* CONTINUOUS FALLING BIRTHDAY EFFECT */
+.falling-effects {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.falling-piece {
+  position: absolute;
+  top: -12vh;
+  left: var(--left);
+  font-size: var(--size);
+  opacity: 0;
+  animation: birthdayFall var(--duration) linear var(--delay) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes birthdayFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(var(--drift), 115vh, 0) rotate(var(--spin));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-piece {
+    animation: none;
+    display: none;
+  }
+}

@@ -190,4 +190,28 @@ document.addEventListener('keydown', (event) => {
     requestAnimationFrame(animateConfetti);
   }
   animateConfetti();
+    // Continuous falling petals, hearts and stars
+  const fallingContainer = document.createElement('div');
+  fallingContainer.className = 'falling-effects';
+  fallingContainer.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(fallingContainer);
+
+  const fallingSymbols = ['🌸', '♡', '✦', '✿', '✧', '💗'];
+
+  for (let i = 0; i < 28; i++) {
+    const piece = document.createElement('span');
+    piece.className = 'falling-piece';
+
+    piece.textContent =
+      fallingSymbols[Math.floor(Math.random() * fallingSymbols.length)];
+
+    piece.style.setProperty('--left', Math.random() * 100 + 'vw');
+    piece.style.setProperty('--size', (12 + Math.random() * 13) + 'px');
+    piece.style.setProperty('--duration', (12 + Math.random() * 12) + 's');
+    piece.style.setProperty('--delay', (-Math.random() * 24) + 's');
+    piece.style.setProperty('--drift', (Math.random() * 160 - 80) + 'px');
+    piece.style.setProperty('--spin', (Math.random() * 720 - 360) + 'deg');
+
+    fallingContainer.appendChild(piece);
+  }
 })();

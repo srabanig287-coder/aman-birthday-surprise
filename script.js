@@ -74,10 +74,46 @@
     if (!document.hidden && !audio.paused) musicLabel.textContent = 'Pause music';
   });
 
-  $('sealBtn').addEventListener('click', () => {
-    $('envelope').classList.add('open');
-    $('letterHint').textContent = 'A little note, just for you ♡';
-  });
+  
+const letterModal = $('letterModal');
+const closeLetterModal = $('closeLetterModal');
+
+function openLetterModal() {
+  $('envelope').classList.add('open');
+
+  letterModal.classList.add('show');
+  letterModal.setAttribute('aria-hidden', 'false');
+
+  document.body.classList.add('letter-open');
+  $('letterHint').textContent = 'Your letter is open ♡';
+}
+
+function closeLetter() {
+  letterModal.classList.remove('show');
+  letterModal.setAttribute('aria-hidden', 'true');
+
+  document.body.classList.remove('letter-open');
+  $('envelope').classList.remove('open');
+
+  $('letterHint').textContent = 'Tap the seal to open your letter';
+}
+
+$('sealBtn').addEventListener('click', openLetterModal);
+
+closeLetterModal.addEventListener('click', closeLetter);
+
+letterModal.addEventListener('click', (event) => {
+  if (event.target === letterModal) {
+    closeLetter();
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && letterModal.classList.contains('show')) {
+    closeLetter();
+  }
+});
+
 
   let candlesOut = 0;
   document.querySelectorAll('.candle').forEach((candle) => {
